@@ -1,98 +1,100 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
 
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
+import { StyleSheet, Text, View } from "react-native";
 
-export default function HomeScreen() {
-  return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
+//Funciones y variables.
+export function all(){
+  const NombreUsuario ="Luis Fernando";
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
-  );
-}
+  const ObtenerSaludo = (NombreUsuario : string) => {
 
+    return <text>Buenas tardes {NombreUsuario}! Bienvenido.</text>
+  
+};
+
+// Condicionales
+  const edad = 17 ;
+
+  const ValidarEdad = (edad: number) => {
+
+
+    return edad >= 18 ? "Estado: Mayor de Edad" : "Estado: Menor de edad";
+  
+};
+
+//Bucles.Map
+
+const ListaProductos = [
+    {id: 1, nombre: "Laptop", precio: "Lps. 6,500"},
+    {id: 2, nombre: "Mouse", precio: "Lps. 250"},
+    {id: 1, nombre: "Audifonos Sony WHX-1400", precio: "Lps. 5,000"},
+];
+
+return  (
+    <View style={styles.container}>
+       {/*Ejercicio A*/}
+       <View style={styles.seccion}>
+        <Text style={styles.titulo}>Funciones y Variables </Text>
+        <Text style={styles.texto}>Usuario: {NombreUsuario}</Text>
+        <Text style={styles.resultado}>{ObtenerSaludo(NombreUsuario)}</Text>
+       </View>
+
+       {/*Ejercicio B*/}
+       <View style={styles.seccion}>
+        <Text style={styles.titulo}>Condiciones</Text>
+        <Text style={styles.texto}>Edad: {edad} años </Text>
+        <Text style={styles.resultado}>
+        <Text style={styles.resultado}>{ValidarEdad(edad)}</Text>
+         </Text>     
+    </View>
+    
+       {/*.Map()*/}
+
+    <View style ={styles.seccion}>
+        <Text style= {styles.titulo}>Bucles con .Map</Text>
+        {ListaProductos.map((item) => (
+            <Text key={item.id} style={styles.itemLista}>
+            {item.nombre} - {item.precio}
+            </Text>
+        ))}
+    </View>
+    </View>
+);
+};
+
+//StyleSheet
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+  container: {
+    flex: 1,
+    backgroundColor: '#f5f5f5',
+    paddingTop: 50,
+    paddingHorizontal: 20,
   },
-  stepContainer: {
-    gap: 8,
+  seccion: {
+    backgroundColor: '#ffffff',
+    padding: 15,
+    borderRadius: 8,
+    marginBottom: 20,
+    elevation: 2,
+  },
+  titulo: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#0284c7',
     marginBottom: 8,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  texto: {
+    fontSize: 14,
+    color: '#333333',
   },
-});
+  resultado: {
+    fontSize: 14,
+    fontWeight: '600',
+    color: '#16a34a',
+    marginTop: 4,
+  },
+  itemLista: {
+    fontSize: 14,
+    color: '#4b5563',
+    marginVertical: 2,
+  },
+}); 
