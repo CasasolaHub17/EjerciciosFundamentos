@@ -1,67 +1,58 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-//Funciones y variables.
-export function all(){
-  const NombreUsuario ="Luis Fernando";
+// Funciones y variables
+export default function All() {
+  const NombreUsuario = "Luis Fernando";
 
-  const ObtenerSaludo = (NombreUsuario : string) => {
+  const ObtenerSaludo = (NombreUsuario: string) => {
+    return `Buenas tardes ${NombreUsuario}! Bienvenido.`;
+  };
 
-    return <text>Buenas tardes {NombreUsuario}! Bienvenido.</text>
-  
-};
-
-// Condicionales
-  const edad = 17 ;
+  // Condicionales
+  const edad = 17;
 
   const ValidarEdad = (edad: number) => {
+    return edad >= 18 ? "Estado: Mayor de Edad" : "Estado: Menor de edad";
+  };
 
+  // Bucles .map()
+  const ListaProductos = [
+    { id: 1, nombre: "Laptop", precio: "Lps. 6,500" },
+    { id: 2, nombre: "Mouse", precio: "Lps. 250" },
+    { id: 3, nombre: "Audifonos Sony WHX-1400", precio: "Lps. 5,000" },
+  ];
 
-    return edad >= 18 ? "Estado: Mayor de Edad" : "Estao: Menor de edad";
-  
-};
-
-//Bucles.Map
-
-const ListaProductos = [
-    {id: 1, nombre: "Laptop", precio: "Lps. 6,500"},
-    {id: 2, nombre: "Mouse", precio: "Lps. 250"},
-    {id: 1, nombre: "Audifonos Sony WHX-1400", precio: "Lps. 5,000"},
-];
-
-return  (
+  return (
     <View style={styles.container}>
-       {/*Ejercicio A*/}
-       <View style={styles.seccion}>
-        <Text style={styles.titulo}>Funciones y Variables </Text>
+      {/* Ejercicio A */}
+      <View style={styles.seccion}>
+        <Text style={styles.titulo}>Funciones y Variables</Text>
         <Text style={styles.texto}>Usuario: {NombreUsuario}</Text>
         <Text style={styles.resultado}>{ObtenerSaludo(NombreUsuario)}</Text>
-       </View>
+      </View>
 
-       {/*Ejercicio B*/}
-       <View style={styles.seccion}>
+      {/* Ejercicio B */}
+      <View style={styles.seccion}>
         <Text style={styles.titulo}>Condiciones</Text>
-        <Text style={styles.texto}>Edad: {edad} años </Text>
-        <Text style={styles.resultado}>
+        <Text style={styles.texto}>Edad: {edad} años</Text>
         <Text style={styles.resultado}>{ValidarEdad(edad)}</Text>
-         </Text>     
-    </View>
-    
-       {/*.Map()*/}
+      </View>
 
-    <View style ={styles.seccion}>
-        <Text style= {styles.titulo}>Bucles con .Map</Text>
+      {/* Bucles con .map() */}
+      <View style={styles.seccion}>
+        <Text style={styles.titulo}>Bucles con .Map</Text>
         {ListaProductos.map((item) => (
-            <Text key={item.id} style={styles.itemLista}>
+          <Text key={item.id} style={styles.itemLista}>
             {item.nombre} - {item.precio}
-            </Text>
+          </Text>
         ))}
+      </View>
     </View>
-    </View>
-);
-};
+  );
+}
 
-//StyleSheet
+// StyleSheet
 const styles = StyleSheet.create({
   container: {
     flex: 1,
