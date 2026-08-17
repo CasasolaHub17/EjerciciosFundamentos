@@ -1,4 +1,4 @@
-
+import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 //Funciones y variables.
@@ -17,7 +17,7 @@ export function all(){
   const ValidarEdad = (edad: number) => {
 
 
-    return edad >= 18 ? "Estado: Mayor de Edad" : "Estado: Menor de edad";
+    return edad >= 18 ? "Estado: Mayor de Edad" : "Estao: Menor de edad";
   
 };
 
@@ -97,4 +97,4 @@ const styles = StyleSheet.create({
     color: '#4b5563',
     marginVertical: 2,
   },
-}); 
+});
