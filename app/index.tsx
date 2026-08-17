@@ -10,7 +10,8 @@ export default function All() {
   };
 
   // Condicionales
-  const edad = 17;
+  const edad = 20
+  ;
 
   const ValidarEdad = (edad: number) => {
     return edad >= 18 ? "Estado: Mayor de Edad" : "Estado: Menor de edad";
