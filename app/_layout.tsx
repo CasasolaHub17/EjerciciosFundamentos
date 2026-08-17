@@ -7,7 +7,7 @@ export default function RootLayout() {
         name="index" 
         options={{ 
           title: 'Ejercicios Fundamentos',
-          headerBackVisible: false // Oculta la flecha hacia atrás
+          headerBackVisible: false 
         }} 
       />
     </Stack>
